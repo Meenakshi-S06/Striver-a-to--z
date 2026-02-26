@@ -8,7 +8,7 @@ public class maxconsecutive {
             arr[i]=sc.nextInt();
         }
         int k = sc.nextInt();
-        int left =0;
+        //int left =0;
         int maxlen =0;
         int zeroes=0;
         // Better solution
@@ -27,9 +27,19 @@ public class maxconsecutive {
             
         }*/
        // Optimized Approach:
-       int right =0;
+       int left = 0, right = 0;
        while(right<n){
-        
+        if(arr[right]==0){
+            k--;
+        }
+        if(k<0){
+            if(arr[left]==0){
+                k++;
+            }
+            left++;
+        }
+        maxlen=Math.max(maxlen,right-left+1);
+        right++;
        }
         System.out.println(maxlen);
     }
